@@ -149,19 +149,5 @@
         <member name="M:Codecool.Enigma.Rot13.Decrypt(System.String)">
             <inheritdoc />
         </member>
-        <member name="M:Codecool.Enigma.Rot13.EncryptLetter(System.Char)">
-            <summary>
-                Encrypts a single letter
-            </summary>
-            <param name="letter">A letter to encrypt</param>
-            <returns>An encrypted letter</returns>
-        </member>
-        <member name="M:Codecool.Enigma.Rot13.DecryptLetter(System.Char)">
-            <summary>
-                Decrypts a single letter
-            </summary>
-            <param name="letter">An encrypted letter to decrypt</param>
-            <returns>A decrypted letter</returns>
-        </member>
     </members>
 </doc>

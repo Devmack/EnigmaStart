@@ -11,12 +11,12 @@
         /// <param name="args">Command line arguments</param>
         public static void Main(string[] args)
         {
-            //ArgsParser argsParser = new ArgsParser(args);
-            //Enigma.HandleArgs(argsParser);
+            ArgsParser argsParser = new ArgsParser(args);
+            Enigma.HandleArgs(argsParser);
 
-            var testCipher = new Rot13();
-            var result = testCipher.Encrypt("Codecool test");
-            System.Console.WriteLine(result);
+            // var testCipher = new Rot13();
+            // var result = testCipher.Encrypt("Codecool test");
+            // System.Console.WriteLine(result);
         }
     }
 }

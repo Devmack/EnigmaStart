@@ -36,8 +36,6 @@
             Cipher = args.Length > 1 ? args[1] : null;
             File = args.Length > 2 ? args[2] : null;
             Key = args.Length > 3 ? args[3] : null;
-
-            
         }
     }
 }
