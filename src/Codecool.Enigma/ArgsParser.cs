@@ -32,6 +32,11 @@
         /// <param name="args">String arguments</param>
         public ArgsParser(string[] args)
         {
+            Option = args[0];
+            Cipher = args[1];
+            File = args[2];
+            Key = args[3];
+
         }
     }
 }
