@@ -1,4 +1,6 @@
-﻿namespace Codecool.Enigma
+﻿using System.Linq;
+
+namespace Codecool.Enigma
 {
     /// <summary>
     ///     CipherFactory static class - returns a proper cipher for given arguments
@@ -12,6 +14,11 @@
         /// <returns>Returns true is cipher is available</returns>
         public static bool IsCipherAvailable(string cipherName)
         {
+            string[] ciphers = { "ROT13", "Rail-fence", "Morse" };
+            if (ciphers.Contains(cipherName))
+            {
+                return true;
+            }
             return false;
         }
 
@@ -22,6 +29,26 @@
         /// <returns>A cipher object</returns>
         public static ICipher GetCipherForArgs(ArgsParser args)
         {
+            string userCipherRequest = args.Cipher;
+            if (!IsCipherAvailable(userCipherRequest))
+            {
+                throw new EnigmaException("Unsupported cipher.");
+            }
+            else
+            {
+                if (userCipherRequest == "ROT13")
+                {
+                    return new Rot13();
+                }
+                if (userCipherRequest == "Rail-fence")
+                {
+                    return new RailFence();
+                }
+                if (userCipherRequest == "Morse")
+                {
+                    return new MorseCode();
+                }
+            }
             return null;
         }
     }
