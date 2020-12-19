@@ -67,6 +67,18 @@ namespace Codecool.Enigma
         {
             ICipher cipher = CipherFactory.GetCipherForArgs(argsParser);
 
+            var fileContent = File.ReadAllText(argsParser.File);
+            var mode = argsParser.Option;
+
+            if (mode == "-e")
+            {
+                Console.WriteLine(cipher.Encrypt(fileContent));
+            }
+            else if (mode == "-d")
+            {
+                Console.WriteLine(cipher.Decrypt(fileContent));
+            }
+            
             // TODO Use cipher
         }
     }
