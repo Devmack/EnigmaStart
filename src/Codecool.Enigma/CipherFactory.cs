@@ -33,6 +33,7 @@ namespace Codecool.Enigma
             if (!IsCipherAvailable(userCipherRequest))
             {
                 throw new EnigmaException("Unsupported cipher.");
+                return null;
             }
             else
             {
