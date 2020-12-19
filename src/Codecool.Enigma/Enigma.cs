@@ -1,4 +1,7 @@
-﻿namespace Codecool.Enigma
+﻿using System;
+using System.Linq;
+
+namespace Codecool.Enigma
 {
     /// <summary>
     ///     Main Enigma logic class
@@ -22,6 +25,17 @@
         public static void HandleArgs(ArgsParser argsParser)
         {
             // TODO ArgsParser validation
+            if (argsParser.Option == "-h" || argsParser.Option == null)
+            {
+                Console.WriteLine(Menu);
+                return;
+            }
+
+            string[] menuOptions = { "-h", "-e", "-d" };
+            if (!menuOptions.Contains(argsParser.Option))
+            {
+                throw new EnigmaException("Incorrect mode.");
+            }
 
             HandleCipherOperation(argsParser);
         }
