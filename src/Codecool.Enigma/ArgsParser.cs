@@ -8,22 +8,22 @@
         /// <summary>
         ///     Gets option
         /// </summary>
-        public string Option { get; private set; }
+        public string Option { get; }
 
         /// <summary>
         ///     Gets cipher name
         /// </summary>
-        public string Cipher { get; private set; }
+        public string Cipher { get; }
 
         /// <summary>
         ///     Gets file name
         /// </summary>
-        public string File { get; private set; }
+        public string File { get; }
 
         /// <summary>
         ///     Gets key (for ciphers that require one)
         /// </summary>
-        public string Key { get; private set; }
+        public string Key { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgsParser"/> class.
@@ -32,11 +32,12 @@
         /// <param name="args">String arguments</param>
         public ArgsParser(string[] args)
         {
-            Option = args[0];
-            Cipher = args[1];
-            File = args[2];
-            Key = args[3];
+            Option = args.Length > 0 ? args[0] : null;
+            Cipher = args.Length > 1 ? args[1] : null;
+            File = args.Length > 2 ? args[2] : null;
+            Key = args.Length > 3 ? args[3] : null;
 
+            
         }
     }
 }
