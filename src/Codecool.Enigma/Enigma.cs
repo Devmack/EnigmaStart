@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace Codecool.Enigma
@@ -31,10 +32,32 @@ namespace Codecool.Enigma
                 return;
             }
 
-            string[] menuOptions = { "-h", "-e", "-d" };
-            if (!menuOptions.Contains(argsParser.Option))
+            try
             {
-                throw new EnigmaException("Incorrect mode.");
+                string[] menuOptions = {"-h", "-e", "-d"};
+                if (!menuOptions.Contains(argsParser.Option))
+                {
+                    throw new EnigmaException("Incorrect mode.");
+                }
+
+                if (argsParser.File == null || argsParser.Cipher == null)
+                {
+                    throw new EnigmaException("Incorrect values.");
+                }
+
+                if (CipherFactory.IsCipherAvailable(argsParser.Cipher) == false)
+                {
+                    throw new EnigmaException("Incorrect cipher name.");
+                }
+
+                if (File.Exists(argsParser.File) == false)
+                {
+                    throw new EnigmaException("Incorrect file path.");
+                }
+            }
+            catch (EnigmaException exception)
+            {
+                Console.WriteLine(exception.Message);
             }
 
             HandleCipherOperation(argsParser);
